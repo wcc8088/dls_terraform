@@ -22,7 +22,7 @@ locals {
 
   multiple_instances = {
     CGW = {
-      instance_type     = "t3.micro"
+      instance_type = "t3.micro"
       root_block_device = [
         {
           encrypted   = true
@@ -49,7 +49,7 @@ locals {
       ]
     }
     CVT = {
-      instance_type     = "t3.micro"
+      instance_type = "t3.micro"
       root_block_device = [
         {
           encrypted   = true
@@ -76,7 +76,7 @@ locals {
       ]
     }
     CPN = {
-      instance_type     = "t3.micro"
+      instance_type = "t3.micro"
       root_block_device = [
         {
           encrypted   = true
@@ -128,13 +128,13 @@ module "ec2_multiple0" {
 
   ami                    = data.aws_ami.ubuntu.id
   instance_type          = each.value.instance_type
-  availability_zone = element(module.vpc.azs, 0)
-  subnet_id         = element(module.vpc.private_subnets, 0)
+  availability_zone      = element(module.vpc.azs, 0)
+  subnet_id              = element(module.vpc.private_subnets, 0)
   vpc_security_group_ids = [module.security_group.security_group_id]
 
   enable_volume_tags = false
   root_block_device  = lookup(each.value, "root_block_device", [])
-  ebs_block_device  = lookup(each.value, "ebs_block_device", [])
+  ebs_block_device   = lookup(each.value, "ebs_block_device", [])
 
   tags = local.tags
 }
@@ -149,13 +149,13 @@ module "ec2_multiple1" {
 
   ami                    = data.aws_ami.ubuntu.id
   instance_type          = each.value.instance_type
-  availability_zone = element(module.vpc.azs, 1)
-  subnet_id         = element(module.vpc.private_subnets, 1)
+  availability_zone      = element(module.vpc.azs, 1)
+  subnet_id              = element(module.vpc.private_subnets, 1)
   vpc_security_group_ids = [module.security_group.security_group_id]
 
   enable_volume_tags = false
   root_block_device  = lookup(each.value, "root_block_device", [])
-  ebs_block_device  = lookup(each.value, "ebs_block_device", [])
+  ebs_block_device   = lookup(each.value, "ebs_block_device", [])
 
   tags = local.tags
 }
@@ -170,13 +170,13 @@ module "ec2_multiple2" {
 
   ami                    = data.aws_ami.ubuntu.id
   instance_type          = each.value.instance_type
-  availability_zone = element(module.vpc.azs, 2)
-  subnet_id         = element(module.vpc.private_subnets, 2)
+  availability_zone      = element(module.vpc.azs, 2)
+  subnet_id              = element(module.vpc.private_subnets, 2)
   vpc_security_group_ids = [module.security_group.security_group_id]
 
   enable_volume_tags = false
   root_block_device  = lookup(each.value, "root_block_device", [])
-  ebs_block_device  = lookup(each.value, "ebs_block_device", [])
+  ebs_block_device   = lookup(each.value, "ebs_block_device", [])
 
   tags = local.tags
 }

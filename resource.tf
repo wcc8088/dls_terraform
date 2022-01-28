@@ -106,7 +106,7 @@ module "security_group" {
   egress_rules        = ["all-all"]
 }
 
-module "ec2_multiple" {
+module "ec2_multiple0" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "~> 3.0"
 
@@ -127,7 +127,7 @@ module "ec2_multiple" {
   tags = local.tags
 }
 
-module "ec2_multiple" {
+module "ec2_multiple1" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "~> 3.0"
 
@@ -148,7 +148,7 @@ module "ec2_multiple" {
   tags = local.tags
 }
 
-module "ec2_multiple" {
+module "ec2_multiple2" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "~> 3.0"
 

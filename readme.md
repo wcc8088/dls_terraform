@@ -5,7 +5,7 @@ AWS, Azure, GCP, OCP 등 퍼블릭 클라우드를 비롯하여 Docker, Kubernet
 # Terraform 환경 구성
 Terraform 을 실행하는 CLI 환경을 Linux 환경에 설치합니다.
 
-## CentOS/RHEL
+### CentOS/RHEL
 1. yum-config-manager 를 설치합니다.
 >$> sudo yum install -y yum-utils
 
@@ -15,7 +15,7 @@ Terraform 을 실행하는 CLI 환경을 Linux 환경에 설치합니다.
 3. 패키지를 설치합니다.
 >$> sudo yum -y install terraform
 
-## Ubuntu/Debian
+### Ubuntu/Debian
 1. 필요한 패키지들을 설치합니다.
 >$> sudo apt-get update && sudo apt-get install -y gnupg software-properties-common curl
 
@@ -31,7 +31,7 @@ Terraform 을 실행하는 CLI 환경을 Linux 환경에 설치합니다.
 # Terraform for AWS 기본
 AWS 클라우드를 지원하는 Terraform 코드에 대한 기본적인 정보입니다. Terraform에서는 기본적으로 AWS CLI 
 
-## AWS CLI 설치
+### AWS CLI 설치
 다음 문서를 참고하여 AWS에 가입하고 AWS CLI를 사용할 유저와 키를 생성합니다.
 >https://docs.aws.amazon.com/cli/latest/userguide/getting-started-prereqs.html
 - Step 1: Sign up to AWS
@@ -52,9 +52,10 @@ AWS 클라우드를 지원하는 Terraform 코드에 대한 기본적인 정보�
 
 5. AWS 계정 환경을 구성합니다.
 >$> aws configure
+
 설정된 계정정보는 $HOME/.aws/credentials 위치에 저장되어 Terraform profile에서 사용됩니다.
 
-## Terraform 기초
+# Terraform 기초
 실행 디렉토리의 모든 .tf 파일을 로드하여 환경을 구성합니다. 따라서 환경에 대한 profile, variable, output 등을 별도의 파일로 저장하여 재활용 가능합니다.
 1. 테라폼 버전을 확인합니다.
 >$> terraform version

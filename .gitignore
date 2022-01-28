@@ -1,0 +1,6 @@
+/.terraform
+/.terraform.lock.hcl
+/resource.tf.vpc
+/terraform.tfstate
+/terraform.tfstate.backup
+/variables.tf.old

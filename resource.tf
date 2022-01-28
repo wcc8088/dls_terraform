@@ -14,6 +14,9 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"]
 }
 
+resource "aws_kms_key" "this" {
+}
+
 locals {
   name = "dlsec2"
 
@@ -27,7 +30,7 @@ locals {
           throughput  = 200
           volume_size = 50
           tags = {
-            Name = "my-root-block"
+            Name = "SHBW-AN2-DLS-PRD-EBS-CGW-DB-01"
           }
         }
       ]
@@ -39,6 +42,9 @@ locals {
           throughput  = 200
           encrypted   = true
           kms_key_id  = aws_kms_key.this.arn
+          tags = {
+            Name = "SHBW-AN2-DLS-PRD-EBS-CGW-DB-02"
+          }
         }
       ]
     }
@@ -51,7 +57,7 @@ locals {
           throughput  = 200
           volume_size = 50
           tags = {
-            Name = "my-root-block"
+            Name = "SHBW-AN2-DLS-PRD-EBS-CVT-DB-01"
           }
         }
       ]
@@ -63,6 +69,9 @@ locals {
           throughput  = 200
           encrypted   = true
           kms_key_id  = aws_kms_key.this.arn
+          tags = {
+            Name = "SHBW-AN2-DLS-PRD-EBS-CVT-DB-01"
+          }
         }
       ]
     }
@@ -75,7 +84,7 @@ locals {
           throughput  = 200
           volume_size = 50
           tags = {
-            Name = "my-root-block"
+            Name = "SHBW-AN2-DLS-PRD-EBS-CPN-DB-01"
           }
         }
       ]
@@ -87,6 +96,9 @@ locals {
           throughput  = 200
           encrypted   = true
           kms_key_id  = aws_kms_key.this.arn
+          tags = {
+            Name = "SHBW-AN2-DLS-PRD-EBS-CPN-DB-01"
+          }
         }
       ]
     }

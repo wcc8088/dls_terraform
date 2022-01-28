@@ -28,8 +28,8 @@ Terraform 을 실행하는 CLI 환경을 Linux 환경에 설치합니다.
 4. Terraform CLI를 설치합니다.
 >$> sudo apt-get update && sudo apt-get install terraform
 
-# Terraform for AWS 기본
-AWS 클라우드를 지원하는 Terraform 코드에 대한 기본적인 정보입니다. Terraform에서는 기본적으로 AWS CLI 
+# Terraform for AWS 환경구성
+AWS 클라우드를 지원하는 Terraform 코드에 대한 기본적인 정보입니다. Terraform에서는 기본적으로 AWS CLI에 설정된 계정을 통해 접속합니다.
 
 ### AWS CLI 설치
 다음 문서를 참고하여 AWS에 가입하고 AWS CLI를 사용할 유저와 키를 생성합니다.

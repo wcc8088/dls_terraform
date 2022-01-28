@@ -135,8 +135,6 @@ module "ec2_multiple0" {
   enable_volume_tags = false
   root_block_device  = lookup(each.value, "root_block_device", [])
   ebs_block_device   = lookup(each.value, "ebs_block_device", [])
-
-  tags = local.tags
 }
 
 module "ec2_multiple1" {
@@ -156,8 +154,6 @@ module "ec2_multiple1" {
   enable_volume_tags = false
   root_block_device  = lookup(each.value, "root_block_device", [])
   ebs_block_device   = lookup(each.value, "ebs_block_device", [])
-
-  tags = local.tags
 }
 
 module "ec2_multiple2" {
@@ -177,6 +173,4 @@ module "ec2_multiple2" {
   enable_volume_tags = false
   root_block_device  = lookup(each.value, "root_block_device", [])
   ebs_block_device   = lookup(each.value, "ebs_block_device", [])
-
-  tags = local.tags
 }

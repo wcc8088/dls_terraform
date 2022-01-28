@@ -42,9 +42,6 @@ locals {
           throughput  = 200
           encrypted   = true
           kms_key_id  = aws_kms_key.this.arn
-          tags = {
-            Name = "SHBW-AN2-DLS-PRD-EBS-CGW-DB-02"
-          }
         }
       ]
     }
@@ -69,9 +66,6 @@ locals {
           throughput  = 200
           encrypted   = true
           kms_key_id  = aws_kms_key.this.arn
-          tags = {
-            Name = "SHBW-AN2-DLS-PRD-EBS-CVT-DB-01"
-          }
         }
       ]
     }
@@ -96,9 +90,6 @@ locals {
           throughput  = 200
           encrypted   = true
           kms_key_id  = aws_kms_key.this.arn
-          tags = {
-            Name = "SHBW-AN2-DLS-PRD-EBS-CPN-DB-01"
-          }
         }
       ]
     }

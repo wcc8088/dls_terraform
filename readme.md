@@ -1,6 +1,7 @@
 # Terraform 개요
 Terraform은 HashiCorp사가 만든 오픈 소스 "코드형 인프라(IaC ; Infrastructure as Code)" 툴 입니다. 
-AWS, Azure, GCP, OCP 등 퍼블릭 클라우드를 비롯하여 Docker, Kubernetes, vSphere 등 컨테이너 환경까지 지원하고 있습니다.
+AWS, Azure, GCP, OCP 등 퍼블릭 클라우드를 비롯하여 Docker, Kubernetes, vSphere 등 컨테이너 환경까지 지원하고 있습니다. 
+Terraform 은 실행 시 해당 디렉토리 이하의 모든 .TF 파일들을 읽어서 실행하기 때문에 여러 개의 TF 파일로 구조화가 가능합니다.
 
 # Terraform 환경 구성
 Terraform 을 실행하는 CLI 환경을 Linux 환경에 설치합니다.
@@ -91,7 +92,7 @@ resource "aws_instance" "app_server" {
 * provider “aws” {} - aws 환경에 필요한 계정정보, region 정보를 정의합니다.
 * resource “module” “name” {} - module을 이용하여 name 이름으로 resource를 생성합니다.
 
-3. 테라폼 실행 디렉토리를 초기화합니다.
+3. 테라폼 실행 디렉토리를 초기화합니다. 실행에 필요한 모듈을 다운받아 설치합니다.
 >$> terraform init
 
 4. 테라폼 설정파일을 포멧에 맞게 수정합니다. 정상일 경우에는 아무 값도 보여주지 않습니다.

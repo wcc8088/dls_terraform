@@ -5,7 +5,7 @@ variable "region" {
 
 variable "ec2prefix" {
   type    = string
-  default = "DLS"
+  default = "DOS"
 }
 
 variable "create" {
@@ -17,7 +17,7 @@ variable "create" {
 variable "name" {
   description = "Name to be used on EC2 instance created"
   type        = string
-  default     = "SHBW-AN2-DLS-PRD-EC2"
+  default     = "SHL-AN2-DLS-PRD-EC2"
 }
 
 variable "ami" {

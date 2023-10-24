@@ -1,9 +1,9 @@
-data "aws_ami" "ubuntu" {
+data "aws_ami" "redhat" {
   most_recent = true
 
   filter {
     name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+    values = ["RHEL-8.6.0_HVM-20220503-x86_64-2-Hourly2-GP2"]
   }
 
   filter {
@@ -11,14 +11,14 @@ data "aws_ami" "ubuntu" {
     values = ["hvm"]
   }
 
-  owners = ["099720109477"]
+  owners = ["309956199498"]
 }
 
 resource "aws_kms_key" "this" {
 }
 
 locals {
-  name = "dlsec2"
+  name = "DOSec2"
 
   multiple_instances = {
     CGW = {
@@ -30,7 +30,7 @@ locals {
           throughput  = 200
           volume_size = 50
           tags = {
-            Name = "SHBW-AN2-DLS-PRD-EBS-CGW-DB-01"
+            Name = "SHL-AN2-DOS-PRD-EBS-CGW-DB-01"
           }
         }
       ]
@@ -54,7 +54,7 @@ locals {
           throughput  = 200
           volume_size = 50
           tags = {
-            Name = "SHBW-AN2-DLS-PRD-EBS-CVT-DB-01"
+            Name = "SHL-AN2-DOS-PRD-EBS-CVT-DB-01"
           }
         }
       ]
@@ -78,7 +78,7 @@ locals {
           throughput  = 200
           volume_size = 50
           tags = {
-            Name = "SHBW-AN2-DLS-PRD-EBS-CPN-DB-01"
+            Name = "SHL-AN2-DOS-PRD-EBS-CPN-DB-01"
           }
         }
       ]
@@ -117,7 +117,7 @@ module "ec2_multiple0" {
 
   name = "${var.name}-${each.key}-DB-11"
 
-  ami                    = data.aws_ami.ubuntu.id
+  ami                    = data.aws_ami.redhat.id
   instance_type          = each.value.instance_type
   availability_zone      = element(module.vpc.azs, 0)
   subnet_id              = element(module.vpc.private_subnets, 0)
@@ -136,7 +136,7 @@ module "ec2_multiple1" {
 
   name = "${var.name}-${each.key}-DB-21"
 
-  ami                    = data.aws_ami.ubuntu.id
+  ami                    = data.aws_ami.redhat.id
   instance_type          = each.value.instance_type
   availability_zone      = element(module.vpc.azs, 1)
   subnet_id              = element(module.vpc.private_subnets, 1)
@@ -155,7 +155,7 @@ module "ec2_multiple2" {
 
   name = "${var.name}-${each.key}-DB-31"
 
-  ami                    = data.aws_ami.ubuntu.id
+  ami                    = data.aws_ami.redhat.id
   instance_type          = each.value.instance_type
   availability_zone      = element(module.vpc.azs, 2)
   subnet_id              = element(module.vpc.private_subnets, 2)

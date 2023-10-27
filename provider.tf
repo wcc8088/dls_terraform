@@ -4,11 +4,11 @@ provider "aws" {
 
   default_tags {
     tags = {
-      Stage      = "PRD"
+      Stage      = "DEV"
       Org        = "TBD"
-      Service    = "Digital Life"
+      Service    = "DevOps"
       Owner      = "TBD"
-      Project    = "DLS"
+      Project    = "DOS"
       No_managed = "FALSE"
       History    = ""
       System     = ""

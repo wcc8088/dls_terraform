@@ -1,9 +1,9 @@
-data "aws_ami" "ubuntu" {
+data "aws_ami" "redhat" {
   most_recent = true
 
   filter {
     name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+    values = ["RHEL-8.6.0_HVM-20220503-x86_64-2-Hourly2-GP2"]
   }
 
   filter {
@@ -11,17 +11,17 @@ data "aws_ami" "ubuntu" {
     values = ["hvm"]
   }
 
-  owners = ["099720109477"]
+  owners = ["309956199498"]
 }
 
 resource "aws_kms_key" "this" {
 }
 
 locals {
-  name = "dlsec2"
+  name = "DOSec2"
 
   multiple_instances = {
-    CGW = {
+    MST = {
       instance_type = "t3.micro"
       root_block_device = [
         {
@@ -30,22 +30,12 @@ locals {
           throughput  = 200
           volume_size = 50
           tags = {
-            Name = "SHBW-AN2-DLS-PRD-EBS-CGW-DB-01"
+            Name = "SHL-AN2-DOS-PRD-EBS-CGW-MST-01"
           }
-        }
-      ]
-      ebs_block_device = [
-        {
-          device_name = "/dev/sdf"
-          volume_type = "gp3"
-          volume_size = 5
-          throughput  = 200
-          encrypted   = true
-          kms_key_id  = aws_kms_key.this.arn
         }
       ]
     }
-    CVT = {
+    WKR = {
       instance_type = "t3.micro"
       root_block_device = [
         {
@@ -54,42 +44,8 @@ locals {
           throughput  = 200
           volume_size = 50
           tags = {
-            Name = "SHBW-AN2-DLS-PRD-EBS-CVT-DB-01"
+            Name = "SHL-AN2-DOS-PRD-EBS-CVT-WKR-01"
           }
-        }
-      ]
-      ebs_block_device = [
-        {
-          device_name = "/dev/sdf"
-          volume_type = "gp3"
-          volume_size = 5
-          throughput  = 200
-          encrypted   = true
-          kms_key_id  = aws_kms_key.this.arn
-        }
-      ]
-    }
-    CPN = {
-      instance_type = "t3.micro"
-      root_block_device = [
-        {
-          encrypted   = true
-          volume_type = "gp3"
-          throughput  = 200
-          volume_size = 50
-          tags = {
-            Name = "SHBW-AN2-DLS-PRD-EBS-CPN-DB-01"
-          }
-        }
-      ]
-      ebs_block_device = [
-        {
-          device_name = "/dev/sdf"
-          volume_type = "gp3"
-          volume_size = 5
-          throughput  = 200
-          encrypted   = true
-          kms_key_id  = aws_kms_key.this.arn
         }
       ]
     }
@@ -115,9 +71,9 @@ module "ec2_multiple0" {
 
   for_each = local.multiple_instances
 
-  name = "${var.name}-${each.key}-DB-11"
+  name = "${var.name}-${each.key}-K8S-11"
 
-  ami                    = data.aws_ami.ubuntu.id
+  ami                    = data.aws_ami.redhat.id
   instance_type          = each.value.instance_type
   availability_zone      = element(module.vpc.azs, 0)
   subnet_id              = element(module.vpc.private_subnets, 0)
@@ -125,7 +81,7 @@ module "ec2_multiple0" {
 
   enable_volume_tags = false
   root_block_device  = lookup(each.value, "root_block_device", [])
-  ebs_block_device   = lookup(each.value, "ebs_block_device", [])
+##ebs_block_device   = lookup(each.value, "ebs_block_device", [])
 }
 
 module "ec2_multiple1" {
@@ -134,9 +90,9 @@ module "ec2_multiple1" {
 
   for_each = local.multiple_instances
 
-  name = "${var.name}-${each.key}-DB-21"
+  name = "${var.name}-${each.key}-K8S-21"
 
-  ami                    = data.aws_ami.ubuntu.id
+  ami                    = data.aws_ami.redhat.id
   instance_type          = each.value.instance_type
   availability_zone      = element(module.vpc.azs, 1)
   subnet_id              = element(module.vpc.private_subnets, 1)
@@ -144,7 +100,7 @@ module "ec2_multiple1" {
 
   enable_volume_tags = false
   root_block_device  = lookup(each.value, "root_block_device", [])
-  ebs_block_device   = lookup(each.value, "ebs_block_device", [])
+##ebs_block_device   = lookup(each.value, "ebs_block_device", [])
 }
 
 module "ec2_multiple2" {
@@ -153,9 +109,9 @@ module "ec2_multiple2" {
 
   for_each = local.multiple_instances
 
-  name = "${var.name}-${each.key}-DB-31"
+  name = "${var.name}-${each.key}-K8S-31"
 
-  ami                    = data.aws_ami.ubuntu.id
+  ami                    = data.aws_ami.redhat.id
   instance_type          = each.value.instance_type
   availability_zone      = element(module.vpc.azs, 2)
   subnet_id              = element(module.vpc.private_subnets, 2)
@@ -163,5 +119,5 @@ module "ec2_multiple2" {
 
   enable_volume_tags = false
   root_block_device  = lookup(each.value, "root_block_device", [])
-  ebs_block_device   = lookup(each.value, "ebs_block_device", [])
+##ebs_block_device   = lookup(each.value, "ebs_block_device", [])
 }

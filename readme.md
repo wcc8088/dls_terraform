@@ -3,7 +3,7 @@ Terraform은 HashiCorp사가 만든 오픈 소스 "코드형 인프라(IaC ; Inf
 AWS, Azure, GCP, OCP 등 퍼블릭 클라우드를 비롯하여 Docker, Kubernetes, vSphere 등 컨테이너 환경까지 지원하고 있습니다. 
 Terraform 은 실행 시 해당 디렉토리 이하의 모든 .TF 파일들을 읽어서 실행하기 때문에 여러 개의 TF 파일로 구조화가 가능합니다.
 
-# Terraform 환경 구성
+# Terraform Azure 환경 구성
 Terraform 을 실행하는 CLI 환경을 Linux 환경에 설치합니다.
 
 ### CentOS/RHEL
